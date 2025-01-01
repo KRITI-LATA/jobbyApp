@@ -7,12 +7,13 @@ import './index.css'
 class LoginForm extends Component {
   state = {
     passwordInput: '',
-    username: '',
+    userInput: '',
     showSubmitError: false,
+    errorMsg: '',
   }
 
   onChangeUserName = event => {
-    this.setState({username: event.target.value})
+    this.setState({userInput: event.target.value})
   }
 
   onChangePassword = event => {
@@ -36,8 +37,8 @@ class LoginForm extends Component {
 
   submitForm = async event => {
     event.preventDefault()
-    const {username, passwordInput} = this.state
-    const userDetails = {username, passwordInput}
+    const {userInput, passwordInput} = this.state
+    const userDetails = {username: userInput, password: passwordInput}
     const apiUrl = 'https://apis.ccbp.in/login'
 
     const options = {
@@ -55,17 +56,17 @@ class LoginForm extends Component {
   }
 
   renderUserNameField = () => {
-    const {username} = this.state
+    const {userInput} = this.state
     return (
       <>
-        <label className="user-name" htmlFor="username">
+        <label className="user-name-pass" htmlFor="username">
           USERNAME
         </label>
         <input
-          className="user-input"
+          className="name-password-input"
           type="text"
           id="username"
-          value={username}
+          value={userInput}
           placeholder="Username"
           onChange={this.onChangeUserName}
         />
@@ -78,12 +79,13 @@ class LoginForm extends Component {
 
     return (
       <>
-        <label className="password" htmlFor="password-field">
+        <label className="user-name-pass" htmlFor="password">
           PASSWORD
         </label>
         <input
           type="password"
-          className="password-input"
+          id="password"
+          className="name-password-input"
           value={passwordInput}
           placeholder="Password"
           onChange={this.onChangePassword}
@@ -101,21 +103,19 @@ class LoginForm extends Component {
 
     return (
       <div className="login-container">
-        <div className="login-form-container">
+        <form className="form-container" onSubmit={this.submitForm}>
           <img
             className="login-image"
             src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
             alt="website logo"
           />
-          <form className="form-container" onSubmit={this.submitForm}>
-            <div className="input-container">{this.renderUserNameField()}</div>
-            <div className="input-container">{this.renderPasswordField()}</div>
-            <button className="login-btn" type="submit">
-              Login
-            </button>
-            {showSubmitError && <p className="error-text">*{errorMsg}</p>}
-          </form>
-        </div>
+          <div className="input-container">{this.renderUserNameField()}</div>
+          <div className="input-container">{this.renderPasswordField()}</div>
+          <button className="login-btn" type="submit">
+            Login
+          </button>
+          {showSubmitError && <p className="error-msg">*{errorMsg}</p>}
+        </form>
       </div>
     )
   }

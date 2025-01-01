@@ -1,0 +1,73 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://assets.ccbp.in/frontend/react-js/home-lg-bg.png');
+  height: 100vh;
+  background-size: cover;
+}
+@media screen and (max-width: 768px) {
+  .login-container {
+    background-image: url('https://assets.ccbp.in/frontend/react-js/home-sm-bg.png');
+  }
+  .form-container {
+    width: 90%;
+  }
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #272727;
+  padding: 20px;
+  border-radius: 12px;
+  width: 30%;
+  max-width: 90%;
+  height: 55%;
+}
+.login-image {
+  width: 120px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  width: 80%;
+}
+.user-name-pass {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 25px;
+}
+.name-password-input {
+  padding: 8px;
+  font-family: 'Roboto';
+  font-size: 14px;
+  border: 2px solid #64748b;
+  background: transparent;
+  color: #ffffff;
+  outline: none;
+}
+.login-btn {
+  background-color: #4f46e5;
+  color: #ffffff;
+  font-family: 'Roboto';
+  width: 80%;
+  padding: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+.error-msg {
+  color: #ff0b37;
+  font-family: 'Roboto';
+  font-size: 12px;
+}
